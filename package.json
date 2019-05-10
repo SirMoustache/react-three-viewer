@@ -1,0 +1,24 @@
+{
+  "name": "react-three-viewer",
+  "version": "0.0.1",
+  "description": "React Three.js 3D model viewer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SirMoustache/react-three-viewer.git"
+  },
+  "keywords": [
+    "React",
+    "THREE.js",
+    "3D"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SirMoustache/react-three-viewer/issues"
+  },
+  "homepage": "https://github.com/SirMoustache/react-three-viewer#readme"
+}
