@@ -4,7 +4,10 @@
   "description": "React Three.js 3D model viewer",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "npm run build:clean",
+    "build": "webpack --config internals/webpack/webpack.prod.js",
+    "build:clean": "rimraf ./build"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,15 @@
   "bugs": {
     "url": "https://github.com/SirMoustache/react-three-viewer/issues"
   },
-  "homepage": "https://github.com/SirMoustache/react-three-viewer#readme"
+  "homepage": "https://github.com/SirMoustache/react-three-viewer#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "babel-loader": "^8.0.5",
+    "rimraf": "^2.6.3",
+    "terser-webpack-plugin": "^1.2.3",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-merge": "^4.2.1"
+  }
 }
