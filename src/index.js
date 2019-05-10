@@ -1,3 +1,5 @@
-const helloWorld = () => 'Hello World';
+class HelloWorld {
+  sayHello = () => 'Hello';
+}
 
-export default helloWorld;
+export default HelloWorld;
