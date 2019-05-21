@@ -2,12 +2,13 @@
   "name": "react-three-viewer",
   "version": "0.0.1",
   "description": "React Three.js 3D model viewer",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "es/react-three-viewer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "npm run build:clean",
-    "build": "webpack --config internals/webpack/webpack.prod.js",
-    "build:clean": "rimraf ./build",
+    "build": "rollup -c",
+    "build:clean": "rimraf ./dist",
     "lint:eslint": "eslint --ignore-path .gitignore",
     "lint:js": "npm run lint:eslint -- ./src/**/*.js"
   },
@@ -26,6 +27,9 @@
     "url": "https://github.com/SirMoustache/react-three-viewer/issues"
   },
   "homepage": "https://github.com/SirMoustache/react-three-viewer#readme",
+  "peerDependencies": {
+    "react": ">= 16.8"
+  },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
@@ -40,9 +44,15 @@
     "eslint-plugin-prettier": "^3.0.1",
     "prettier": "^1.17.0",
     "rimraf": "^2.6.3",
-    "terser-webpack-plugin": "^1.2.3",
-    "webpack": "^4.31.0",
-    "webpack-cli": "^3.3.2",
-    "webpack-merge": "^4.2.1"
+    "rollup": "^1.12.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.0"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   }
 }
