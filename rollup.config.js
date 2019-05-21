@@ -1,4 +1,4 @@
-// import typescript from 'rollup-plugin-typescript2';
+import typescript from 'rollup-plugin-typescript2';
 import commonjs from 'rollup-plugin-commonjs';
 // import external from 'rollup-plugin-peer-deps-external';
 // import postcss from 'rollup-plugin-postcss-modules'
@@ -6,7 +6,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 // import url from 'rollup-plugin-url';
 // import svgr from '@svgr/rollup';
-import babel from 'rollup-plugin-babel';
+// import babel from 'rollup-plugin-babel';
 
 import pkg from './package.json';
 
@@ -16,7 +16,7 @@ const umdGlobals = {
 };
 
 export default {
-  input: 'src/index.js',
+  input: 'src/index.tsx',
   output: {
     file: pkg.main,
     format: 'umd',
@@ -47,11 +47,11 @@ export default {
     // url(),
     // svgr(),
     resolve(),
-    // typescript({
-    //   rollupCommonJSResolveHack: true,
-    //   clean: true,
-    // }),
-    babel({ exclude: '**/node_modules/**' }),
+    typescript({
+      rollupCommonJSResolveHack: true,
+      clean: true,
+    }),
+    // babel({ exclude: '**/node_modules/**' }),
     commonjs(),
   ],
 };
