@@ -21,21 +21,21 @@ export default {
   output: [
     {
       file: pkg.main,
-      format: 'umd',
-      name: 'reactThreeViewer',
-      globals: umdGlobals,
+      format: 'cjs',
+      // name: 'reactThreeViewer',
+      // globals: umdGlobals,
       // external: [...Object.keys(pkg.peerDependencies || {})],
       sourcemap: true,
       exports: 'named',
     },
-    {
-      file: pkg.module,
-      format: 'es',
-      globals: umdGlobals,
-      // external,
-      exports: 'named',
-      sourcemap: true,
-    },
+    // {
+    //   file: pkg.module,
+    //   format: 'es',
+    //   globals: umdGlobals,
+    //   // external,
+    //   exports: 'named',
+    //   sourcemap: true,
+    // },
   ],
   // output: [
   //   {
@@ -62,7 +62,6 @@ export default {
     typescript({
       rollupCommonJSResolveHack: true,
       clean: true,
-      exclude: '**/node_modules/**',
     }),
     // babel({ exclude: '**/node_modules/**' }),
     commonjs(),

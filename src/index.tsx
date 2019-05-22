@@ -1,5 +1,4 @@
-import React from 'react';
-
-const HelloWorld: React.FC  = () => <div>Hello World!</div>;
+import HelloWorld from './HelloWorld';
+export { default as useViewer } from './useViewer';
 
 export default HelloWorld;
