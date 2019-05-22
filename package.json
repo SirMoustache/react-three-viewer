@@ -9,6 +9,7 @@
     "prebuild": "npm run build:clean",
     "build": "rollup -c",
     "build:clean": "rimraf ./dist",
+    "start": "rollup -c -w",
     "lint:eslint": "eslint --ignore-path .gitignore",
     "lint:js": "npm run lint:eslint -- ./src/**/*.js"
   },
@@ -28,7 +29,9 @@
   },
   "homepage": "https://github.com/SirMoustache/react-three-viewer#readme",
   "peerDependencies": {
-    "react": ">= 16.8"
+    "react": ">= 16.8",
+    "react-dom": ">= 16.8",
+    "prop-types": ">=15.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -48,7 +51,8 @@
     "rollup": "^1.12.3",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^10.0.0",
-    "rollup-plugin-node-resolve": "^5.0.0"
+    "rollup-plugin-node-resolve": "^5.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0"
   },
   "dependencies": {
     "@babel/preset-react": "^7.0.0",

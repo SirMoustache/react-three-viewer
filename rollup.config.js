@@ -1,6 +1,6 @@
 import typescript from 'rollup-plugin-typescript2';
 import commonjs from 'rollup-plugin-commonjs';
-// import external from 'rollup-plugin-peer-deps-external';
+import external from 'rollup-plugin-peer-deps-external';
 // import postcss from 'rollup-plugin-postcss-modules'
 // import postcss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
@@ -13,6 +13,7 @@ import pkg from './package.json';
 const umdGlobals = {
   react: 'React',
   'prop-types': 'PropTypes',
+  'react-dom': 'ReactDOM',
 };
 
 export default {
@@ -23,6 +24,7 @@ export default {
       format: 'umd',
       name: 'reactThreeViewer',
       globals: umdGlobals,
+      // external: [...Object.keys(pkg.peerDependencies || {})],
       sourcemap: true,
       exports: 'named',
     },
@@ -30,6 +32,7 @@ export default {
       file: pkg.module,
       format: 'es',
       globals: umdGlobals,
+      // external,
       exports: 'named',
       sourcemap: true,
     },
@@ -49,7 +52,7 @@ export default {
   //   },
   // ],
   plugins: [
-    // external(),
+    external(),
     // postcss({
     //   modules: true,
     // }),
@@ -59,6 +62,7 @@ export default {
     typescript({
       rollupCommonJSResolveHack: true,
       clean: true,
+      exclude: '**/node_modules/**',
     }),
     // babel({ exclude: '**/node_modules/**' }),
     commonjs(),
