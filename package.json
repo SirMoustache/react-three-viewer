@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "React Three.js 3D model viewer",
   "main": "dist/index.js",
-  "module": "es/react-three-viewer.js",
+  "module": "dist/es/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "npm run build:clean",

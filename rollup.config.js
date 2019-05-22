@@ -17,14 +17,23 @@ const umdGlobals = {
 
 export default {
   input: 'src/index.tsx',
-  output: {
-    file: pkg.main,
-    format: 'umd',
-    name: 'reactThreeViewer',
-    globals: umdGlobals,
-    sourcemap: true,
-    exports: 'named',
-  },
+  output: [
+    {
+      file: pkg.main,
+      format: 'umd',
+      name: 'reactThreeViewer',
+      globals: umdGlobals,
+      sourcemap: true,
+      exports: 'named',
+    },
+    {
+      file: pkg.module,
+      format: 'es',
+      globals: umdGlobals,
+      exports: 'named',
+      sourcemap: true,
+    },
+  ],
   // output: [
   //   {
   //     file: pkg.main,
