@@ -49,7 +49,10 @@ const viewer = (config: ViewerConfig) => {
     renderer.gammaInput = true;
     renderer.gammaOutput = true;
 
-    renderer.setSize(config.placeholder.clientWidth, config.placeholder.clientHeight);
+    renderer.setSize(
+      config.placeholder.clientWidth,
+      config.placeholder.clientHeight,
+    );
 
     config.placeholder.appendChild(renderer.domElement);
   };
@@ -92,11 +95,42 @@ const viewer = (config: ViewerConfig) => {
   };
 
   /**
+   * Update Camera size
+   * @private
+   */
+  const updateCameraSize = () => {
+    const width = config.placeholder.offsetWidth;
+    const height = config.placeholder.offsetHeight;
+
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+  };
+
+  /**
+   * Update Renderer size
+   * @private
+   */
+  const updateRendererSize = () => {
+    const width = config.placeholder.offsetWidth;
+    const height = config.placeholder.offsetHeight;
+    renderer.setSize(width, height);
+  };
+
+  /**
    * render frame of current scene
    * @private
    */
   const render = () => {
     renderer.render(scene, camera);
+  };
+
+  /**
+   * Force Camera and Renderer size update
+   * @public
+   */
+  const resize = () => {
+    updateCameraSize();
+    updateRendererSize();
   };
 
   /**
@@ -117,7 +151,7 @@ const viewer = (config: ViewerConfig) => {
   createPig();
   animationLoop();
 
-  return { render };
+  return { render, resize };
 };
 
 export default viewer;
