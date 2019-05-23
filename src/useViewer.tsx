@@ -7,7 +7,7 @@ const useViewer = (elementRef: React.MutableRefObject<HTMLElement>) => {
     console.log('useViewer hook');
     viewer({
       placeholder: elementRef.current,
-    }).render();
+    }).load();
   });
 
   const render = () => console.log('render');

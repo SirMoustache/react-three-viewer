@@ -1,0 +1,145 @@
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
+/**
+ * initialize THREE.js Scene
+ */
+// export const createScene = () => {
+//   const scene = new THREE.Scene();
+//   return scene;
+// };
+
+/**
+ * initialize Three.js Perspective Camera
+ */
+export const createCamera = (placeholder: HTMLElement) => {
+  const width = placeholder.clientWidth;
+  const height = placeholder.clientHeight;
+
+  const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000000);
+  camera.position.set(5, 5, 5);
+  camera.up = new THREE.Vector3(0, 0, 1);
+
+  return camera;
+};
+
+/**
+ * initialize THREE.js Renderer
+ */
+export const createRenderer = (placeholder: HTMLElement) => {
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true,
+  });
+
+  const { clientWidth, clientHeight } = placeholder;
+
+  renderer.gammaInput = true;
+  renderer.gammaOutput = true;
+
+  renderer.setSize(clientWidth, clientHeight);
+
+  return renderer;
+};
+
+/**
+ * initialize Three.js Cameras Controls
+ */
+export const createCameraControls = (
+  camera: THREE.Camera,
+  renderer: THREE.Renderer,
+) => {
+  const autoRotateDefaultSpeed = 5.0;
+
+  const cameraControls = new OrbitControls(camera, renderer.domElement);
+
+  cameraControls.autoRotateSpeed = autoRotateDefaultSpeed;
+  cameraControls.enableKeys = false;
+
+  return cameraControls;
+};
+
+/**
+ * initialize Light from Camera
+ */
+const createCameraLight = () => {
+  const cameraLight = new THREE.PointLight(0xffffff, 0.7, 0);
+  // camera.add(cameraLight);
+  return cameraLight;
+};
+
+/**
+ * Update Camera size
+ */
+const updateCameraSize = (
+  camera: THREE.PerspectiveCamera,
+  width: number,
+  height: number,
+) => {
+  camera.aspect = width / height;
+  camera.updateProjectionMatrix();
+};
+
+/**
+ * Update Renderer size
+ * @private
+ */
+const updateRendererSize = (
+  renderer: THREE.Renderer,
+  width: number,
+  height: number,
+) => {
+  renderer.setSize(width, height);
+};
+
+export interface SceneOptions {
+  placeholder: HTMLElement;
+}
+
+export const createScene = ({ placeholder }: SceneOptions) => {
+  const scene = new THREE.Scene();
+
+  const camera = createCamera(placeholder);
+  const renderer = createRenderer(placeholder);
+  const cameraControls = createCameraControls(camera, renderer);
+  const cameraLight = createCameraLight();
+
+  scene.add(camera);
+  camera.add(cameraLight);
+  cameraControls.update();
+  placeholder.appendChild(renderer.domElement);
+
+  /**
+   * render frame of current scene
+   */
+  const render = () => {
+    renderer.render(scene, camera);
+  };
+
+  /**
+   * Force Camera and Renderer size update
+   */
+  const resize = () => {
+    const { clientWidth, clientHeight } = placeholder;
+    updateCameraSize(camera, clientWidth, clientHeight);
+    updateRendererSize(renderer, clientWidth, clientHeight);
+  };
+
+  /**
+   * Add Objects to scene
+   */
+  const add = (...props: THREE.Object3D[]) => scene.add(...props);
+
+  /**
+   * Start render animation loop
+   */
+  const animationLoop = () => {
+    render();
+    cameraControls.update();
+    requestAnimationFrame(animationLoop);
+  };
+
+  animationLoop();
+
+  return { scene, render, add, resize };
+};
