@@ -10,7 +10,7 @@
     "build:clean": "rimraf ./dist",
     "start": "rollup -c -w",
     "lint:eslint": "eslint --ignore-path .gitignore",
-    "lint:js": "npm run lint:eslint -- ./src/**/*.js"
+    "lint:ts": "npm run lint:eslint -- ./src/**/*.ts*"
   },
   "repository": {
     "type": "git",
@@ -38,9 +38,11 @@
     "@babel/preset-env": "^7.4.4",
     "babel-loader": "^8.0.5",
     "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.13.0",
     "prettier": "^1.17.0",
