@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import HelloWorld, { useViewer } from 'react-three-viewer';
 import logo from './logo.svg';
 import './App.css';
 
 const App: React.FC = () => {
-  const {} = useViewer();
+  const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const example = useViewer(elementRef);
   useEffect(() => {
     console.log('useViewwr ');
   });
@@ -15,7 +16,7 @@ const App: React.FC = () => {
         <img src={logo} className="App-logo" alt="logo" />
         <HelloWorld />
         <p>
-          Edit  <code>src/App.tsx</code> and save to reload.
+          Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -25,6 +26,7 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
+        <div style={{width: '200px', height: '200px'}} ref={elementRef}>tesst</div>
       </header>
     </div>
   );

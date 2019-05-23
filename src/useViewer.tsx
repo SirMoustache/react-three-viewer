@@ -1,8 +1,13 @@
 import * as React from 'react';
 
-const useViewer = () => {
+import viewer from './utils/viewer';
+
+const useViewer = (elementRef: React.MutableRefObject<HTMLElement>) => {
   React.useEffect(() => {
-    console.log('useViewer');
+    console.log('useViewer hook');
+    viewer({
+      placeholder: elementRef.current,
+    }).render();
   });
 
   const render = () => console.log('render');
