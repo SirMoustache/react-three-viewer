@@ -4,7 +4,7 @@
   "description": "React Three.js 3D model viewer",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cross-env NODE_ENV=test jest --config jest.config.js",
     "prebuild": "npm run build:clean",
     "build": "rollup -c",
     "build:clean": "rimraf ./dist",
@@ -36,6 +36,7 @@
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
+    "@types/jest": "^24.0.13",
     "babel-loader": "^8.0.5",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -45,6 +46,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.13.0",
+    "jest": "^24.8.0",
     "prettier": "^1.17.0",
     "rimraf": "^2.6.3",
     "rollup": "^1.12.3",
@@ -52,13 +54,15 @@
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-node-resolve": "^5.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
-    "three": "^0.104.0"
+    "three": "^0.104.0",
+    "ts-jest": "^24.0.2"
   },
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
     "@types/react": "^16.8.18",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
+    "cross-env": "^5.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "rollup-plugin-typescript2": "^0.21.1",

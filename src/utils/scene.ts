@@ -42,6 +42,20 @@ export const createRenderer = (placeholder: HTMLElement) => {
   return renderer;
 };
 
+export class Test {
+  camera: any;
+  elem: any;
+  autoRotateSpeed: any;
+  enableKeys: any;
+
+  constructor(camera: any, elem: any) {
+    this.camera = camera;
+    this.elem = elem;
+  }
+
+  update() {}
+}
+
 /**
  * initialize Three.js Cameras Controls
  */
