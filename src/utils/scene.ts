@@ -26,10 +26,11 @@ export const createCamera = (placeholder: HTMLElement) => {
 /**
  * initialize THREE.js Renderer
  */
-export const createRenderer = (placeholder: HTMLElement) => {
+export const createRenderer = (placeholder: HTMLElement, canvas?: any) => {
   const renderer = new THREE.WebGLRenderer({
     antialias: true,
     alpha: true,
+    canvas,
   });
 
   const { clientWidth, clientHeight } = placeholder;
@@ -44,8 +45,11 @@ export const createRenderer = (placeholder: HTMLElement) => {
 
 export class Test {
   camera: any;
+
   elem: any;
+
   autoRotateSpeed: any;
+
   enableKeys: any;
 
   constructor(camera: any, elem: any) {
@@ -90,6 +94,7 @@ const updateCameraSize = (
   width: number,
   height: number,
 ) => {
+  // eslint-disable-next-line no-param-reassign
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
 };

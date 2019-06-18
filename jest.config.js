@@ -23,6 +23,7 @@ module.exports = {
     'three/examples/jsm/controls/OrbitControls':
       '<rootDir>/node_modules/three/examples/jsm/controls/OrbitControls',
   },
+  setupFiles: ['jest-canvas-mock'],
   // testPathIgnorePatterns: [
   //   '<rootDir>//node_modules/',
   //   '<rootDir>/example',
