@@ -13,7 +13,8 @@
     "typescript": "3.4.5"
   },
   "devDependencies": {
-    "react-three-viewer": "file:.."
+    "react-three-viewer": "file:..",
+    "three": "^0.107.0"
   },
   "scripts": {
     "start": "react-scripts start",
