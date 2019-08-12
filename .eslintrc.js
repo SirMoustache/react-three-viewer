@@ -7,12 +7,8 @@ const prettierOptions = JSON.parse(
 
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: [
-    'airbnb',
-    'prettier',
-    'prettier/react',
-  ],
-  plugins: ['prettier', 'react', '@typescript-eslint'],
+  extends: ['airbnb', 'prettier', 'prettier/react'],
+  plugins: ['prettier', 'react', 'react-hooks', '@typescript-eslint'],
   env: {
     browser: true,
     node: true,
@@ -60,8 +56,8 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
-        '@typescript-eslint/no-unused-vars': [2, { args: 'none' }]
-      }
-    }
-  ]
+        '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
+      },
+    },
+  ],
 };
