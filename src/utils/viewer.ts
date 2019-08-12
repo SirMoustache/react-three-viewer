@@ -7,19 +7,27 @@ interface ViewerConfig {
   placeholder: HTMLElement;
 }
 
+export type Viewer = {
+  load: (file: File) => Promise<any>;
+  addPig: () => void;
+};
+
 const viewer = (config: ViewerConfig) => {
   const scene = createScene({ placeholder: config.placeholder });
 
-  const pig = new Pig();
-  scene.add(pig.bodyGroup);
+  const addPig = () => {
+    const pig = new Pig();
+    scene.add(pig.bodyGroup);
+  };
 
   const load = (file: File) =>
     loadFile(file)
-      .then(([fileData]) => fileData)
+      .then(([fileDataPromise]) => fileDataPromise)
+      .then(fileDataPromise => fileDataPromise.promise)
       .then(parseStl)
       .then(scene.add);
 
-  return { load };
+  return { load, addPig };
 };
 
 export default viewer;

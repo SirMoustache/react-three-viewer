@@ -6,12 +6,10 @@ import React, { useEffect, useRef } from 'react';
 /**
  * Viewer
  */
-import viewer from './utils/viewer';
+import viewer, { Viewer } from './utils/viewer';
 
 const useViewer = (elementRef: React.MutableRefObject<HTMLElement>) => {
-  const testViewer = useRef<{
-    load: (val: any) => any;
-  }>();
+  const testViewer = useRef<Viewer>();
 
   useEffect(() => {
     testViewer.current = viewer({
@@ -22,9 +20,16 @@ const useViewer = (elementRef: React.MutableRefObject<HTMLElement>) => {
   // const render = () => console.log('render');
 
   return {
-    // @ts-ignore
-    // load: testViewer.current.load,
-    load: (val: any) => val,
+    load: (file: File) => {
+      if (testViewer.current) {
+        testViewer.current.load(file);
+      }
+    },
+    addPig: () => {
+      if (testViewer.current) {
+        testViewer.current.addPig();
+      }
+    },
   };
 };
 

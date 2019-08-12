@@ -5,9 +5,10 @@ import './App.css';
 
 const App: React.FC = () => {
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>;
-  const { load } = useViewer(elementRef);
+  const { load, addPig } = useViewer(elementRef);
   useEffect(() => {
-    console.log('useViewwr ');
+    console.log('addPig useEffect ');
+    addPig();
   });
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
