@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import 'three/examples/js/controls/OrbitControls';
 
 /**
  * initialize THREE.js Scene

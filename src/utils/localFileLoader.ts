@@ -1,25 +1,47 @@
-export const loacalFileLoader = () => {};
+/**
+ * Utils
+ */
+import { createPromise, CancelablePromise } from './promiseUtils';
 
-type CancelablePromise = {
-  resolve: (value?: {} | PromiseLike<{}> | undefined) => void;
-  reject: (reason?: any) => void;
-  promise: Promise<any>;
-};
+export const loadFile = (
+  file: File,
+): Promise<
+  [CancelablePromise<string | ArrayBuffer | null>, ((reason: any) => void)]
+> => {
+  const reader = new FileReader();
+  const readerPromise = createPromise<string | ArrayBuffer | null>();
 
-export const createPromise = (): CancelablePromise => {
-  let resolve: any;
-  let reject: any;
-  const promise = new Promise((promiseResolve, promiseReject) => {
-    resolve = promiseResolve;
-    reject = promiseReject;
-    promiseResolve();
+  reader.addEventListener('error', () => {
+    //= new Error(`Error while reading File ${file.name}`)
+    const error =
+      reader.error || new Error(`Error while reading File ${file.name}`);
+    readerPromise.reject(error);
   });
 
-  return { promise, resolve, reject };
+  reader.addEventListener(
+    'load',
+    () => {
+      const data = reader.result;
+      // const fileObject = new FileObject(file, data);
+      readerPromise.resolve(data);
+    },
+    false,
+  );
+
+  //reader.readAsText(file);
+  reader.readAsArrayBuffer(file);
+
+  return Promise.resolve([
+    readerPromise,
+    (reason: any) => abort(reader, readerPromise, reason),
+  ]);
 };
 
-export const load = file => {
-  const reader = new FileReader();
-  const prom = createPromise();
-  prom.reject();
+const abort = (
+  reader: FileReader,
+  promise: CancelablePromise<any>,
+  reason: any,
+) => {
+  reader.abort();
+  promise.reject(reason);
 };

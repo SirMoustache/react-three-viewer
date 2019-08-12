@@ -1,18 +1,31 @@
-import * as React from 'react';
+/**
+ * Absolute imports
+ */
+import React, { useEffect, useRef } from 'react';
 
+/**
+ * Viewer
+ */
 import viewer from './utils/viewer';
 
 const useViewer = (elementRef: React.MutableRefObject<HTMLElement>) => {
-  React.useEffect(() => {
-    console.log('useViewer hook');
-    viewer({
+  const testViewer = useRef<{
+    load: (val: any) => any;
+  }>();
+
+  useEffect(() => {
+    testViewer.current = viewer({
       placeholder: elementRef.current,
-    }).load();
-  });
+    });
+  }, [elementRef.current]);
 
-  const render = () => console.log('render');
+  // const render = () => console.log('render');
 
-  return { render };
+  return {
+    // @ts-ignore
+    // load: testViewer.current.load,
+    load: (val: any) => val,
+  };
 };
 
 export default useViewer;

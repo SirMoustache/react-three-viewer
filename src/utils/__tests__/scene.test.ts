@@ -1,8 +1,12 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 // import { createCanvas } from 'canvas';
 
-import { createCamera, createRenderer, createCameraControls } from '../scene';
+import {
+  createCamera,
+  // createRenderer,
+  // createCameraControls
+} from '../scene';
 
 describe('createCamera', () => {
   it('shoul return a PerspectiveCamera instance', () => {
@@ -13,23 +17,23 @@ describe('createCamera', () => {
   });
 });
 
-describe('createRenderer', () => {
-  it('should return a WebGLRenderer instance', () => {
-    const placeholder = document.createElement('div');
-    const canvas = document.createElement('canvas');
-    const renderer = createRenderer(placeholder, canvas);
+// describe('createRenderer', () => {
+//   it('should return a WebGLRenderer instance', () => {
+//     const placeholder = document.createElement('div');
+//     const canvas = document.createElement('canvas');
+//     const renderer = createRenderer(placeholder, canvas);
 
-    expect(renderer).toBeInstanceOf(THREE.WebGLRenderer);
-  });
-});
+//     expect(renderer).toBeInstanceOf(THREE.WebGLRenderer);
+//   });
+// });
 
-describe('createCameraControls', () => {
-  it('should return a OrbitControls instance', () => {
-    const placeholder = document.createElement('div');
-    const camera = createCamera(placeholder);
-    const renderer = createRenderer(placeholder);
-    const cameraControls = createCameraControls(camera, renderer);
+// describe('createCameraControls', () => {
+//   it('should return a OrbitControls instance', () => {
+//     const placeholder = document.createElement('div');
+//     const camera = createCamera(placeholder);
+//     const renderer = createRenderer(placeholder);
+//     const cameraControls = createCameraControls(camera, renderer);
 
-    expect(cameraControls).toBeInstanceOf(OrbitControls);
-  });
-});
+//     expect(cameraControls).toBeInstanceOf(OrbitControls);
+//   });
+// });

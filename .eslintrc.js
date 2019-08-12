@@ -42,8 +42,10 @@ module.exports = {
     'no-confusing-arrow': 0,
     'no-console': 1,
     'no-use-before-define': 0,
+    'no-unused-vars': 1,
     'prefer-template': 2,
     'require-yield': 0,
+    '@typescript-eslint/no-unused-vars': 1,
   },
   settings: {
     'import/resolver': {

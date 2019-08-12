@@ -5,16 +5,26 @@ import './App.css';
 
 const App: React.FC = () => {
   const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>;
-  const example = useViewer(elementRef);
+  const { load } = useViewer(elementRef);
   useEffect(() => {
     console.log('useViewwr ');
   });
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const fileList = event.target.files;
+    if (fileList) {
+      const file = fileList[0];
+      load(file);
+    }
+  };
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <HelloWorld />
+        <hr />
+        <input type="file" onChange={handleFileChange} />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -26,7 +36,9 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
-        <div style={{width: '200px', height: '200px'}} ref={elementRef}>tesst</div>
+        <div style={{ width: '200px', height: '200px' }} ref={elementRef}>
+          tesst
+        </div>
       </header>
     </div>
   );

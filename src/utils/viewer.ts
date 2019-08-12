@@ -1,4 +1,6 @@
 import { createScene } from './scene';
+import { loadFile } from './localFileLoader';
+import { parseStl } from './parser';
 import Pig from './pig';
 
 interface ViewerConfig {
@@ -11,7 +13,11 @@ const viewer = (config: ViewerConfig) => {
   const pig = new Pig();
   scene.add(pig.bodyGroup);
 
-  const load = () => console.log('loading... ');
+  const load = (file: File) =>
+    loadFile(file)
+      .then(([fileData]) => fileData)
+      .then(parseStl)
+      .then(scene.add);
 
   return { load };
 };

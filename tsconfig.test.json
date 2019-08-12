@@ -1,15 +1,23 @@
+// {
+//   "compilerOptions": {
+//     "outDir": "build",
+//     "noImplicitAny": false,
+//     "sourceMap": false,
+//     "module": "commonjs",
+//     "lib": [
+//       "es6",
+//       "dom"
+//     ],
+//     // "target": "es5",
+//     "allowJs": true,
+//     "moduleResolution": "node"
+//   }
+// }
+
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "build",
-    "noImplicitAny": false,
-    "sourceMap": false,
     "module": "commonjs",
-    "lib": [
-      "es6",
-      "dom"
-    ],
-    "target": "es5",
     "allowJs": true,
-    "moduleResolution": "node"
   }
 }
