@@ -1,5 +1,19 @@
 # react-three-viewer
 
+## Scripts
+
+### `npm start`
+
+Start dev build in watch mpde
+
+### `npm run build`
+
+Prod build
+
+### `npm test`
+
+Run tests
+
 ## How to solve problems
 
 ### VS Code linter dont lint `*.ts` files
@@ -24,11 +38,11 @@ Well for my specific case I ended up with this workaround
 
 ```javascript
 overrides: [
-    {
-      files: ['*.ts', '*.tsx'],
-      rules: {
-        '@typescript-eslint/no-unused-vars': [2, { args: 'none' }]
-      }
-    }
-  ]
+  {
+    files: ['*.ts', '*.tsx'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
+    },
+  },
+];
 ```

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import typescript from 'rollup-plugin-typescript2';
 import commonjs from 'rollup-plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
@@ -6,12 +7,15 @@ import external from 'rollup-plugin-peer-deps-external';
 import resolve from 'rollup-plugin-node-resolve';
 // import url from 'rollup-plugin-url';
 // import svgr from '@svgr/rollup';
-// import babel from 'rollup-plugin-babel';
+import babel from 'rollup-plugin-babel';
 
 import pkg from './package.json';
 
+const extensions = ['.ts', '.tsx', '.js', '.jsx'];
+
 const umdGlobals = {
   react: 'React',
+  three: 'THREE',
   'prop-types': 'PropTypes',
   'react-dom': 'ReactDOM',
 };
@@ -19,11 +23,20 @@ const umdGlobals = {
 export default {
   input: 'src/index.tsx',
   output: [
+    // {
+    //   file: pkg.main,
+    //   format: 'cjs',
+    //   // name: 'reactThreeViewer',
+    //   globals: umdGlobals,
+    //   // external: [...Object.keys(pkg.peerDependencies || {})],
+    //   sourcemap: true,
+    //   exports: 'named',
+    // },
     {
       file: pkg.main,
-      format: 'cjs',
-      // name: 'reactThreeViewer',
-      // globals: umdGlobals,
+      format: 'umd',
+      name: 'reactThreeViewer',
+      globals: umdGlobals,
       // external: [...Object.keys(pkg.peerDependencies || {})],
       sourcemap: true,
       exports: 'named',
@@ -51,6 +64,7 @@ export default {
   //     sourcemap: true,
   //   },
   // ],
+  external: [...Object.keys(umdGlobals || {})],
   plugins: [
     external(),
     // postcss({
@@ -58,12 +72,18 @@ export default {
     // }),
     // url(),
     // svgr(),
-    resolve(),
-    typescript({
-      rollupCommonJSResolveHack: true,
-      clean: true,
+    resolve({
+      jsnext: true,
+      extensions,
     }),
-    // babel({ exclude: '**/node_modules/**' }),
+    // typescript({
+    //   rollupCommonJSResolveHack: true,
+    //   clean: true,
+    // }),
+    babel({
+      extensions,
+      exclude: '**/node_modules/**',
+    }),
     commonjs(),
   ],
 };
