@@ -12,7 +12,7 @@ export type Viewer = {
   addPig: () => void;
 };
 
-const viewer = (config: ViewerConfig) => {
+const createViewer = (config: ViewerConfig): Viewer => {
   const scene = createScene({ placeholder: config.placeholder });
 
   const addPig = () => {
@@ -30,4 +30,4 @@ const viewer = (config: ViewerConfig) => {
   return { load, addPig };
 };
 
-export default viewer;
+export default createViewer;

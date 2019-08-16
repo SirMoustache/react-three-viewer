@@ -6,13 +6,13 @@ import React, { useEffect, useRef } from 'react';
 /**
  * Viewer
  */
-import viewer, { Viewer } from './utils/viewer';
+import createViewer, { Viewer } from './utils/viewer';
 
 const useViewer = (elementRef: React.MutableRefObject<HTMLElement>) => {
   const testViewer = useRef<Viewer>();
 
   useEffect(() => {
-    testViewer.current = viewer({
+    testViewer.current = createViewer({
       placeholder: elementRef.current,
     });
   }, [elementRef.current]);

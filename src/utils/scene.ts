@@ -1,6 +1,11 @@
-import * as THREE from 'three';
+/**
+ * Absolute imports
+ */
+import THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 // import 'three/examples/js/controls/OrbitControls';
+
+import { getBoundingBoxCenter } from './boundingBox';
 
 /**
  * initialize THREE.js Scene
@@ -13,11 +18,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 /**
  * initialize Three.js Perspective Camera
  */
-export const createCamera = (placeholder: HTMLElement) => {
-  const width = placeholder.clientWidth;
-  const height = placeholder.clientHeight;
-
-  const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000000);
+export const createCamera = (aspect: number) => {
+  const camera = new THREE.PerspectiveCamera(60, aspect, 0.1, 1000000);
   camera.position.set(5, 5, 5);
   camera.up = new THREE.Vector3(0, 0, 1);
 
@@ -27,19 +29,17 @@ export const createCamera = (placeholder: HTMLElement) => {
 /**
  * initialize THREE.js Renderer
  */
-export const createRenderer = (placeholder: HTMLElement, canvas?: any) => {
+export const createRenderer = (width: number, height: number, canvas?: any) => {
   const renderer = new THREE.WebGLRenderer({
     antialias: true,
     alpha: true,
     canvas,
   });
 
-  const { clientWidth, clientHeight } = placeholder;
-
   renderer.gammaInput = true;
   renderer.gammaOutput = true;
 
-  renderer.setSize(clientWidth, clientHeight);
+  renderer.setSize(width, height);
 
   return renderer;
 };
@@ -74,6 +74,7 @@ export const createCameraControls = (
 
   cameraControls.autoRotateSpeed = autoRotateDefaultSpeed;
   cameraControls.enableKeys = false;
+  cameraControls.update();
 
   return cameraControls;
 };
@@ -83,7 +84,6 @@ export const createCameraControls = (
  */
 const createCameraLight = () => {
   const cameraLight = new THREE.PointLight(0xffffff, 0.7, 0);
-  // camera.add(cameraLight);
   return cameraLight;
 };
 
@@ -112,21 +112,37 @@ const updateRendererSize = (
   renderer.setSize(width, height);
 };
 
+/**
+ * Set Camera Target
+ */
+export const setCameraTarget = (
+  cameraControls: OrbitControls,
+  target: THREE.Vector3,
+) => {
+  // eslint-disable-next-line no-param-reassign
+  cameraControls.target = target;
+  cameraControls.update();
+};
+
 export interface SceneOptions {
   placeholder: HTMLElement;
 }
 
 export const createScene = ({ placeholder }: SceneOptions) => {
+  const width = placeholder.clientWidth;
+  const height = placeholder.clientHeight;
+
   const scene = new THREE.Scene();
 
-  const camera = createCamera(placeholder);
-  const renderer = createRenderer(placeholder);
+  const camera = createCamera(width / height);
+  const renderer = createRenderer(width, height);
   const cameraControls = createCameraControls(camera, renderer);
   const cameraLight = createCameraLight();
 
   scene.add(camera);
   camera.add(cameraLight);
   cameraControls.update();
+
   placeholder.appendChild(renderer.domElement);
 
   /**
@@ -148,7 +164,11 @@ export const createScene = ({ placeholder }: SceneOptions) => {
   /**
    * Add Objects to scene
    */
-  const add = (...props: THREE.Object3D[]) => scene.add(...props);
+  const add = (object: THREE.Object3D) => {
+    const center = getBoundingBoxCenter(object);
+    setCameraTarget(cameraControls, center);
+    scene.add(object);
+  };
 
   /**
    * Start render animation loop
