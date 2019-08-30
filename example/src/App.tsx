@@ -3,7 +3,7 @@ import HelloWorld, { useViewer } from 'react-three-viewer';
 import './App.css';
 
 const App: React.FC = () => {
-  const elementRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const elementRef = useRef<HTMLDivElement | null>(null);
   const { load, addPig } = useViewer(elementRef);
 
   useEffect(() => {
