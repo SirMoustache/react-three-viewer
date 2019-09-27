@@ -1,5 +1,7 @@
 # react-three-viewer
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/SirMoustache/react-three-viewer.svg)](https://greenkeeper.io/)
+
 ## How to use
 
 ```javascript
