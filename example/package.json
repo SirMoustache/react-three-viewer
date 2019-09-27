@@ -3,18 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/jest": "24.0.13",
-    "@types/node": "12.0.2",
-    "@types/react": "16.8.18",
-    "@types/react-dom": "16.8.4",
+    "@types/jest": "24.0.18",
+    "@types/node": "12.7.8",
+    "@types/react": "16.9.3",
+    "@types/react-dom": "16.9.1",
     "react": "file:../node_modules/react",
     "react-dom": "^16.8.6",
-    "react-scripts": "^3.1.0",
-    "typescript": "3.4.5"
+    "react-scripts": "^3.1.2",
+    "typescript": "3.6.3"
   },
   "devDependencies": {
     "react-three-viewer": "file:..",
-    "three": "^0.107.0"
+    "three": "^0.108.0"
   },
   "scripts": {
     "start": "react-scripts start",
