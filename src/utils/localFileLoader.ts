@@ -5,11 +5,9 @@ import { createPromise, CancelablePromise } from './promiseUtils';
 
 export const loadFile = (
   file: File,
-): Promise<
-  [CancelablePromise<string | ArrayBuffer | null>, ((reason: any) => void)]
-> => {
+): Promise<[Promise<ArrayBuffer>, ((reason: any) => void)]> => {
   const reader = new FileReader();
-  const readerPromise = createPromise<string | ArrayBuffer | null>();
+  const readerPromise = createPromise<ArrayBuffer>();
 
   reader.addEventListener('error', () => {
     //= new Error(`Error while reading File ${file.name}`)
@@ -21,7 +19,7 @@ export const loadFile = (
   reader.addEventListener(
     'load',
     () => {
-      const data = reader.result;
+      const data = reader.result as ArrayBuffer;
       // const fileObject = new FileObject(file, data);
       readerPromise.resolve(data);
     },
@@ -32,7 +30,7 @@ export const loadFile = (
   reader.readAsArrayBuffer(file);
 
   return Promise.resolve([
-    readerPromise,
+    readerPromise.promise,
     (reason: any) => abort(reader, readerPromise, reason),
   ]);
 };

@@ -125,12 +125,12 @@ export const setCameraTarget = (
 };
 
 export interface SceneOptions {
-  placeholder: HTMLElement;
+  placeholder: HTMLElement | null;
 }
 
 export const createScene = ({ placeholder }: SceneOptions) => {
-  const width = placeholder.clientWidth;
-  const height = placeholder.clientHeight;
+  const width = placeholder ? placeholder.clientWidth : 0;
+  const height = placeholder ? placeholder.clientHeight : 0;
 
   const scene = new THREE.Scene();
 
@@ -143,7 +143,13 @@ export const createScene = ({ placeholder }: SceneOptions) => {
   camera.add(cameraLight);
   cameraControls.update();
 
-  placeholder.appendChild(renderer.domElement);
+  /**
+   * TODO: make nice replacement
+   */
+  if (placeholder) {
+    // placeholder.innerHTML = '';
+    placeholder.appendChild(renderer.domElement);
+  }
 
   /**
    * render frame of current scene
@@ -156,17 +162,15 @@ export const createScene = ({ placeholder }: SceneOptions) => {
    * Force Camera and Renderer size update
    */
   const resize = () => {
-    const { clientWidth, clientHeight } = placeholder;
-    updateCameraSize(camera, clientWidth, clientHeight);
-    updateRendererSize(renderer, clientWidth, clientHeight);
+    // const { clientWidth, clientHeight } = placeholder;
+    updateCameraSize(camera, width, height);
+    updateRendererSize(renderer, width, height);
   };
 
   /**
    * Add Objects to scene
    */
   const add = (object: THREE.Object3D) => {
-    const center = getBoundingBoxCenter(object);
-    setCameraTarget(cameraControls, center);
     scene.add(object);
   };
 
@@ -179,7 +183,15 @@ export const createScene = ({ placeholder }: SceneOptions) => {
     requestAnimationFrame(animationLoop);
   };
 
+  /**
+   * Focus camera at object center
+   */
+  const cameraFocusObject = (object: THREE.Object3D) => {
+    const center = getBoundingBoxCenter(object);
+    setCameraTarget(cameraControls, center);
+  };
+
   animationLoop();
 
-  return { scene, render, add, resize };
+  return { scene, render, add, resize, cameraFocusObject };
 };

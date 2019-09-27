@@ -8,10 +8,11 @@ import React, { useEffect, useRef } from 'react';
  */
 import createViewer, { Viewer } from './utils/viewer';
 
-const useViewer = (elementRef: React.MutableRefObject<HTMLElement>) => {
+const useViewer = (elementRef: React.MutableRefObject<HTMLElement | null>) => {
   const testViewer = useRef<Viewer>();
 
   useEffect(() => {
+    console.log('createViewer trigger', elementRef.current);
     testViewer.current = createViewer({
       placeholder: elementRef.current,
     });
@@ -23,6 +24,11 @@ const useViewer = (elementRef: React.MutableRefObject<HTMLElement>) => {
     load: (file: File) => {
       if (testViewer.current) {
         testViewer.current.load(file);
+      }
+    },
+    fetch: (url: string) => {
+      if (testViewer.current) {
+        testViewer.current.fetch(url);
       }
     },
     addPig: () => {
