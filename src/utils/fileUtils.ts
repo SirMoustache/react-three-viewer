@@ -48,15 +48,26 @@ export const getFileParseResultType = (extension: string) => {
   return extensionParseResultType[extension] || 'string';
 };
 
-export const ab2str = (buf: ArrayBuffer) => {
-  return String.fromCharCode.apply(null, new Uint16Array(buf));
+export const arrayBufferToNumber = (buffer: ArrayBuffer) => {
+  const bytes = new Uint8Array(buffer);
+  const dv = new DataView(bytes.buffer);
+  return dv.getUint16(0, true);
 };
 
-function str2ab(str: any) {
-  var buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
-  var bufView = new Uint16Array(buf);
-  for (var i = 0, strLen = str.length; i < strLen; i++) {
-    bufView[i] = str.charCodeAt(i);
-  }
-  return buf;
-}
+export const arrayBufferToString = (buffer: ArrayBuffer) => {
+  // const nufferAsNumber = arrayBufferToNumber(buf);
+  // return String.fromCharCode.apply(null, nufferAsNumber);
+  // const bytes = new Uint16Array(buffer);
+  //return String.fromCharCode.apply(null, bytes as any);
+  const encoding = 'utf8';
+  return Buffer.from(buffer).toString(encoding);
+};
+
+// function str2ab(str: any) {
+//   var buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
+//   var bufView = new Uint16Array(buf);
+//   for (var i = 0, strLen = str.length; i < strLen; i++) {
+//     bufView[i] = str.charCodeAt(i);
+//   }
+//   return buf;
+// }

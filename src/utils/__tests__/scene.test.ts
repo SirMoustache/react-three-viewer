@@ -10,8 +10,9 @@ import {
 
 describe('createCamera', () => {
   it('shoul return a PerspectiveCamera instance', () => {
-    const placeholder = document.createElement('div');
-    const camera = createCamera(placeholder);
+    // const placeholder = document.createElement('div');
+    const ratio = 1;
+    const camera = createCamera(ratio);
 
     expect(camera).toBeInstanceOf(THREE.PerspectiveCamera);
   });
