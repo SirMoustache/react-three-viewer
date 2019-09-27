@@ -1,7 +1,7 @@
 /**
  * Absolute imports
  */
-import THREE from 'three';
+import * as THREE from 'three';
 
 export const isMesh = (object: any): object is THREE.Mesh => object.isMesh;
 export const isGroup = (object: any): object is THREE.Group => object.isGroup;

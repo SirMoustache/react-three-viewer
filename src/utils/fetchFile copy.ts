@@ -1,4 +1,4 @@
-import THREE from 'three';
+import * as THREE from 'three';
 
 /**
  * Utils
@@ -9,7 +9,7 @@ import { getFileParseResultType, getExtension } from './fileUtils';
 export const fetchFile = (fileUrl: string) => {
   const fetchPromise = createPromise<string | ArrayBuffer | null>();
   const extension = getExtension(fileUrl);
-  
+
   const responseType =
     getFileParseResultType(extension) === 'arraybuffer'
       ? 'arraybuffer'
