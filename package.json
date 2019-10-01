@@ -29,7 +29,7 @@
   "homepage": "https://github.com/SirMoustache/react-three-viewer#readme",
   "peerDependencies": {
     "react": ">= 16.8",
-    "three": ">= 0.100"
+    "three": ">=0.109.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -57,7 +57,7 @@
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-node-resolve": "^5.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
-    "three": "^0.108.0",
+    "three": "^0.109.0",
     "ts-jest": "^24.0.2",
     "urijs": "^1.19.1"
   },
