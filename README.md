@@ -2,9 +2,17 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/SirMoustache/react-three-viewer.svg)](https://greenkeeper.io/)
 
+## Installation
+
+It requires [three.js](https://github.com/mrdoob/three.js/) library to work
+
+```bash
+npm install react-three-viewer three
+```
+
 ## How to use
 
-```javascript
+```tsx
 import { useViewer } from 'react-three-viewer';
 
 const App: React.FC = () => {
@@ -43,8 +51,24 @@ const App: React.FC = () => {
     </div>
   );
 };
-
 ```
+
+## Hook API Methods
+
+```javascript
+const { load, fetch } = useViewer();
+```
+
+- `load(file: File)` - Load 3d file and add it to scene
+- `fetch(url: string)` - Fetch 3d file by http and add it to scene
+
+## Hook Config
+
+```javascript
+const {} = useViewer(elementRef);
+```
+
+- `elementRef` - Ref to element for viewer to append
 
 ## How to solve problems
 
@@ -70,11 +94,11 @@ Well for my specific case I ended up with this workaround
 
 ```javascript
 overrides: [
-    {
-      files: ['*.ts', '*.tsx'],
-      rules: {
-        '@typescript-eslint/no-unused-vars': [2, { args: 'none' }]
-      }
-    }
-  ]
+  {
+    files: ['*.ts', '*.tsx'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
+    },
+  },
+];
 ```
