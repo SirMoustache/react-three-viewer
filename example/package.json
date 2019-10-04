@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "@types/jest": "24.0.18",
-    "@types/node": "12.7.8",
-    "@types/react": "16.9.3",
+    "@types/node": "12.7.9",
+    "@types/react": "16.9.5",
     "@types/react-dom": "16.9.1",
     "react": "file:../node_modules/react",
     "react-dom": "^16.8.6",
@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "react-three-viewer": "file:..",
-    "three": "^0.108.0"
+    "three": "^0.109.0"
   },
   "scripts": {
     "start": "react-scripts start",
