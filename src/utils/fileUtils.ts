@@ -58,7 +58,7 @@ export const arrayBufferToString = (buffer: ArrayBuffer) => {
   // const nufferAsNumber = arrayBufferToNumber(buf);
   // return String.fromCharCode.apply(null, nufferAsNumber);
   // const bytes = new Uint16Array(buffer);
-  //return String.fromCharCode.apply(null, bytes as any);
+  // return String.fromCharCode.apply(null, bytes as any);
   const encoding = 'utf8';
   return Buffer.from(buffer).toString(encoding);
 };

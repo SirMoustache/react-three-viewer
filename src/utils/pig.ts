@@ -7,22 +7,22 @@ const colors = {
 };
 
 const materials = {
-  pigMaterial: function() {
+  pigMaterial() {
     return new THREE.MeshStandardMaterial({
       color: colors.pigColor,
     });
   },
-  pigNoseMaterial: function() {
+  pigNoseMaterial() {
     return new THREE.MeshStandardMaterial({
       color: colors.pigNoseColor,
     });
   },
-  pigEyeMaterial: function() {
+  pigEyeMaterial() {
     return new THREE.MeshStandardMaterial({
       color: '#fff',
     });
   },
-  floorMaterial: function() {
+  floorMaterial() {
     return new THREE.MeshPhongMaterial({
       color: 0xb5e5d9,
     });
@@ -31,14 +31,18 @@ const materials = {
 
 class Pig {
   bodyGroup: THREE.Group;
+
   body: THREE.Mesh;
+
   nose: THREE.Mesh;
+
   leftEye: THREE.Mesh;
+
   rightEye: THREE.Mesh;
 
   constructor() {
     this.bodyGroup = new THREE.Group();
-    //Pig Body
+    // Pig Body
     this.body = new THREE.Mesh(
       new THREE.BoxGeometry(10, 8, 10),
       materials.pigMaterial(),
@@ -46,7 +50,7 @@ class Pig {
     this.body.castShadow = true;
     this.body.receiveShadow = true;
 
-    //Pig Nose
+    // Pig Nose
     this.nose = new THREE.Mesh(
       new THREE.BoxGeometry(2, 2, 2),
       materials.pigNoseMaterial(),
@@ -55,7 +59,7 @@ class Pig {
     this.nose.castShadow = true;
     this.nose.receiveShadow = true;
 
-    //Pig Left Eye
+    // Pig Left Eye
     this.leftEye = new THREE.Mesh(
       new THREE.BoxGeometry(2, 2, 1),
       materials.pigEyeMaterial(),
@@ -64,7 +68,7 @@ class Pig {
     this.leftEye.position.y = 2;
     this.leftEye.position.x = 2;
 
-    //Pig Left Eye
+    // Pig Left Eye
     this.rightEye = new THREE.Mesh(
       new THREE.BoxGeometry(2, 2, 1),
       materials.pigEyeMaterial(),
@@ -73,7 +77,7 @@ class Pig {
     this.rightEye.position.y = 2;
     this.rightEye.position.x = -2;
 
-    //Body Group
+    // Body Group
     this.bodyGroup.position.y = 5;
     this.bodyGroup.add(this.body);
     this.bodyGroup.add(this.nose);

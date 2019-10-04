@@ -10,7 +10,7 @@ export const loadFile = (
   const readerPromise = createPromise<ArrayBuffer>();
 
   reader.addEventListener('error', () => {
-    //= new Error(`Error while reading File ${file.name}`)
+    // = new Error(`Error while reading File ${file.name}`)
     const error =
       reader.error || new Error(`Error while reading File ${file.name}`);
     readerPromise.reject(error);
@@ -26,7 +26,7 @@ export const loadFile = (
     false,
   );
 
-  //reader.readAsText(file);
+  // reader.readAsText(file);
   reader.readAsArrayBuffer(file);
 
   return Promise.resolve([

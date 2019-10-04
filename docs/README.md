@@ -2,6 +2,12 @@
 
 ## How to publish npm module
 
+`npm publish` will run `prepare` script which will trigger `prepublishOnly`
+
+```bash
+npm publish
+```
+
 ### Scripts
 
 **prepare** will run both before the package is packed and published, and on local `npm install`
@@ -13,7 +19,7 @@
 **prepublishOnly** will run before prepare and only on `npm publish`
 
 ```json
-"prepublishOnly": "npm test && npm run lint"
+"prepublishOnly": "npm test && npm run lint:ts"
 ```
 
 **preversion** will run before bumping a new package version
