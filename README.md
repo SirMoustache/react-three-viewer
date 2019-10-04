@@ -2,6 +2,10 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/SirMoustache/react-three-viewer.svg)](https://greenkeeper.io/)
 
+A simple library to view 3d models in react app build with [three.js](https://github.com/mrdoob/three.js/)
+
+[codesandbox exampe](https://codesandbox.io/s/react-three-viewer-example-l1vni)
+
 ## Installation
 
 It requires [three.js](https://github.com/mrdoob/three.js/) library to work
