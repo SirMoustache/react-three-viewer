@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "React Three.js 3D model viewer",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --config jest.config.js",
     "prebuild": "npm run build:clean",
@@ -10,8 +11,16 @@
     "build:clean": "rimraf ./dist",
     "start": "rollup -c -w",
     "lint:eslint": "eslint --ignore-path .gitignore",
-    "lint:ts": "npm run lint:eslint -- ./src/**/*.ts*"
+    "lint:ts": "npm run lint:eslint -- ./src/**/*.ts*",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run prettify && git add -A src",
+    "postversion": "git push && git push --tags"
   },
+  "files": [
+    "dist/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SirMoustache/react-three-viewer.git"
