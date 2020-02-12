@@ -82,7 +82,7 @@
     "cross-env": "^7.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "rollup-plugin-typescript2": "^0.25.2",
+    "rollup-plugin-typescript2": "^0.26.0",
     "typescript": "3.6.3"
   }
 }
