@@ -1,12 +1,10 @@
+/**
+ * Absolute imports
+ */
 import typescript from 'rollup-plugin-typescript2';
-import commonjs from 'rollup-plugin-commonjs';
+import commonjs from '@rollup/plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
-// import postcss from 'rollup-plugin-postcss-modules'
-// import postcss from 'rollup-plugin-postcss';
-import resolve from 'rollup-plugin-node-resolve';
-// import url from 'rollup-plugin-url';
-// import svgr from '@svgr/rollup';
-// import babel from 'rollup-plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
 
 import pkg from './package.json';
 
@@ -53,15 +51,14 @@ export default {
   // ],
   plugins: [
     external(),
-    // postcss({
-    //   modules: true,
-    // }),
-    // url(),
-    // svgr(),
     resolve(),
     typescript({
       rollupCommonJSResolveHack: true,
+      exclude: ['**/__tests__/**'],
       clean: true,
+    }),
+    commonjs({
+      include: ['node_modules/**'],
     }),
     // babel({ exclude: '**/node_modules/**' }),
     commonjs(),
