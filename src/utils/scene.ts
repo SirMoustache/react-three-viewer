@@ -36,9 +36,6 @@ export const createRenderer = (width: number, height: number, canvas?: any) => {
     canvas,
   });
 
-  renderer.gammaInput = true;
-  renderer.gammaOutput = true;
-
   renderer.setSize(width, height);
 
   return renderer;

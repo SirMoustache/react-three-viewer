@@ -47,8 +47,8 @@
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
-    "@types/react": "^16.9.20",
     "@types/jest": "^25.1.2",
+    "@types/react": "^16.9.20",
     "@types/urijs": "^1.19.3",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
@@ -70,7 +70,7 @@
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-node-resolve": "^5.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
-    "three": "^0.111.0",
+    "three": "^0.113.2",
     "ts-jest": "^25.1.0",
     "urijs": "^1.19.1"
   },
