@@ -47,8 +47,8 @@
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
-    "@types/react": "^16.9.17",
-    "@types/jest": "^24.0.24",
+    "@types/react": "^16.9.20",
+    "@types/jest": "^25.1.2",
     "@types/urijs": "^1.19.3",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
@@ -59,10 +59,10 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.15.1",
     "eslint-plugin-react-hooks": "^2.0.1",
-    "husky": "^3.0.8",
+    "husky": "^4.0.2",
     "jest": "^24.9.0",
     "jest-canvas-mock": "^2.1.0",
-    "lint-staged": "^9.4.1",
+    "lint-staged": "^10.0.3",
     "prettier": "^1.18.2",
     "rimraf": "^3.0.0",
     "rollup": "^1.25.1",
@@ -71,7 +71,7 @@
     "rollup-plugin-node-resolve": "^5.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "three": "^0.112.0",
-    "ts-jest": "^24.0.2",
+    "ts-jest": "^25.1.0",
     "urijs": "^1.19.1"
   },
   "dependencies": {
@@ -79,10 +79,10 @@
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.3.1",
     "canvas": "^2.5.0",
-    "cross-env": "^6.0.0",
+    "cross-env": "^7.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "rollup-plugin-typescript2": "^0.25.2",
+    "rollup-plugin-typescript2": "^0.26.0",
     "typescript": "3.6.3"
   }
 }
