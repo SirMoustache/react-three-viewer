@@ -71,7 +71,7 @@
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-peer-deps-external": "^2.2.2",
     "rollup-plugin-typescript2": "^0.26.0",
-    "three": "^0.113.2",
+    "three": "^0.114.0",
     "ts-jest": "^25.1.0",
     "urijs": "^1.19.1"
   },
