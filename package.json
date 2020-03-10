@@ -40,7 +40,7 @@
   "homepage": "https://github.com/SirMoustache/react-three-viewer#readme",
   "peerDependencies": {
     "react": ">= 16.8",
-    "three": ">=0.111.0"
+    "three": ">=0.114.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -50,7 +50,7 @@
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@types/jest": "^25.1.3",
-    "@types/react": "^16.9.20",
+    "@types/react": "^16.9.21",
     "@types/urijs": "^1.19.3",
     "eslint": "^6.5.1",
     "eslint-config-airbnb": "^18.0.1",
@@ -67,11 +67,11 @@
     "lint-staged": "^10.0.3",
     "prettier": "^1.18.2",
     "rimraf": "^3.0.0",
-    "rollup": "^1.31.1",
+    "rollup": "^2.0.0",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-peer-deps-external": "^2.2.2",
     "rollup-plugin-typescript2": "^0.26.0",
-    "three": "^0.113.2",
+    "three": "^0.114.0",
     "ts-jest": "^25.1.0",
     "urijs": "^1.19.1"
   },

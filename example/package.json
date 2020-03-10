@@ -5,7 +5,7 @@
   "dependencies": {
     "@types/jest": "25.1.3",
     "@types/node": "13.7.2",
-    "@types/react": "16.9.20",
+    "@types/react": "16.9.21",
     "@types/react-dom": "16.9.4",
     "react": "file:../node_modules/react",
     "react-dom": "^16.8.6",
@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "react-three-viewer": "file:..",
-    "three": "^0.111.0"
+    "three": "^0.114.0"
   },
   "scripts": {
     "start": "react-scripts start",
