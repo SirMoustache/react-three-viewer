@@ -40,7 +40,7 @@
   "homepage": "https://github.com/SirMoustache/react-three-viewer#readme",
   "peerDependencies": {
     "react": ">= 16.8",
-    "three": ">=0.114.0"
+    "three": ">=0.115.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
