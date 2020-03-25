@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "react-three-viewer": "file:..",
-    "three": "^0.114.0"
+    "three": "^0.115.0"
   },
   "scripts": {
     "start": "react-scripts start",
