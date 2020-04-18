@@ -1,6 +1,6 @@
 {
   "name": "react-three-viewer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React Three.js 3D model viewer",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
