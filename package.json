@@ -83,6 +83,6 @@
     "cross-env": "^7.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "typescript": "3.6.3"
+    "typescript": "^3.8.3"
   }
 }
