@@ -6,7 +6,7 @@ import {
   createCamera,
   // createRenderer,
   // createCameraControls
-} from '../scene';
+} from '../viewer/scene/scene';
 
 describe('createCamera', () => {
   it('shoul return a PerspectiveCamera instance', () => {

@@ -6,13 +6,13 @@ import { useEffect, useRef } from 'react';
 /**
  * Viewer
  */
-import createViewer, { Viewer } from './utils/viewer';
+import { Viewer, createViewer } from './utils/viewer';
 
 const useViewer = () => {
   const testViewer = useRef<Viewer>();
-  const placeholderRef = useRef<HTMLElement | null>(null);
+  const placeholderRef = useRef<HTMLCanvasElement | null>(null);
 
-  const setRef = (el: HTMLElement | null) => {
+  const setRef = (el: HTMLCanvasElement | null) => {
     placeholderRef.current = el;
   };
 
@@ -26,19 +26,27 @@ const useViewer = () => {
   // const render = () => console.log('render');
 
   const load = (file: File) => {
-    if (testViewer.current) {
-      testViewer.current.load(file);
-    }
+    if (!testViewer.current) return;
+
+    testViewer.current.load(file);
   };
+
   const fetch = (url: string) => {
-    if (testViewer.current) {
-      testViewer.current.fetch(url);
-    }
+    if (!testViewer.current) return;
+
+    testViewer.current.fetch(url);
   };
+
   const addPig = () => {
-    if (testViewer.current) {
-      testViewer.current.addPig();
-    }
+    if (!testViewer.current) return;
+
+    testViewer.current.addPig();
+  };
+
+  const clearScene = () => {
+    if (!testViewer.current) return;
+
+    testViewer.current.clearScene();
   };
 
   return [
@@ -47,6 +55,7 @@ const useViewer = () => {
       load,
       fetch,
       addPig,
+      clearScene,
     },
   ] as const;
 };

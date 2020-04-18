@@ -11,7 +11,9 @@ export const isObject3D = (object: any): object is THREE.Object3D =>
 /**
  * Get camera position to fit model in viewer
  */
-export const getCameraPositionToFitModel = (model: any): THREE.Vector3 => {
+export const getCameraPositionToFitModel = (
+  model: THREE.Object3D | THREE.Mesh | THREE.Group,
+): THREE.Vector3 => {
   const boundingBox = getBoundingBox(model);
   const boundingSphere = getBoundingSphere(model);
   const modelCenter = getBoundingBoxCenter(model);

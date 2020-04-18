@@ -27,9 +27,7 @@ export const getExtension = (file: File | string) => {
   }
 
   if (typeof file === 'string') {
-    return URI(file)
-      .suffix()
-      .toLowerCase();
+    return URI(file).suffix().toLowerCase();
   }
 
   throw new Error('Failed to get File Extension');

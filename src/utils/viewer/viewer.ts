@@ -1,32 +1,34 @@
 /**
  * Utils
  */
-import { createScene } from './scene';
-import { loadFile } from './localFileLoader';
-import { fetchFile } from './fetchFile';
+import { createScene } from './scene/scene';
+import { loadFile } from './loaders/localFileLoader';
+import { fetchFile } from '../fetchFile';
 import { parseStl } from './parsers/parseStl';
 
 /**
  * Pig
  */
-import Pig from './pig';
+import Pig from '../pig';
 
 interface ViewerConfig {
-  placeholder: HTMLElement | null;
+  placeholder: HTMLCanvasElement | null;
 }
 
 export type Viewer = {
   load: (file: File) => Promise<any>;
   fetch: (url: string) => Promise<any>;
   addPig: () => void;
+  clearScene: () => void;
 };
 
-const createViewer = (config: ViewerConfig): Viewer => {
+export const createViewer = (config: ViewerConfig): Viewer => {
   const scene = createScene({ placeholder: config.placeholder });
 
   const addPig = () => {
     const pig = new Pig();
     scene.add(pig.bodyGroup);
+    scene.fitObjectToView(pig.bodyGroup);
     scene.cameraFocusObject(pig.bodyGroup);
   };
 
@@ -34,21 +36,25 @@ const createViewer = (config: ViewerConfig): Viewer => {
     loadFile(file)
       .then(([fileDataPromise]) => fileDataPromise)
       .then(parseStl)
-      .then(model => {
+      .then((model) => {
         scene.add(model);
+        scene.fitObjectToView(model);
         scene.cameraFocusObject(model);
       });
 
   const fetch = (url: string) =>
     fetchFile(url)
       .then(([fileDataPromise]) => fileDataPromise)
-      .then(file => parseStl(file))
-      .then(model => {
+      .then((file) => parseStl(file))
+      .then((model) => {
         scene.add(model);
+        scene.fitObjectToView(model);
         scene.cameraFocusObject(model);
       });
 
-  return { load, fetch, addPig };
-};
+  const clearScene = () => {
+    scene.clearScene();
+  };
 
-export default createViewer;
+  return { load, fetch, addPig, clearScene };
+};
