@@ -29,13 +29,13 @@ export default {
       sourcemap: true,
       exports: 'named',
     },
-    {
-      file: pkg.browser,
-      format: 'umd',
-      name: 'RTV',
-      exports: 'named',
-      sourcemap: true,
-    },
+    // {
+    //   file: pkg.browser,
+    //   format: 'umd',
+    //   name: 'RTV',
+    //   exports: 'named',
+    //   sourcemap: true,
+    // },
     {
       file: pkg.module,
       format: 'es',
