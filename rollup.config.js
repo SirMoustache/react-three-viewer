@@ -6,13 +6,16 @@ import commonjs from '@rollup/plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
 
+/**
+ * package.json
+ */
 import pkg from './package.json';
 
-const umdGlobals = {
-  react: 'React',
-  'prop-types': 'PropTypes',
-  'react-dom': 'ReactDOM',
-};
+// const umdGlobals = {
+//   react: 'React',
+//   'prop-types': 'PropTypes',
+//   'react-dom': 'ReactDOM',
+// };
 
 export default {
   input: 'src/index.tsx',
@@ -26,29 +29,20 @@ export default {
       sourcemap: true,
       exports: 'named',
     },
-    // {
-    //   file: pkg.module,
-    //   format: 'es',
-    //   globals: umdGlobals,
-    //   // external,
-    //   exports: 'named',
-    //   sourcemap: true,
-    // },
+    {
+      file: pkg.browser,
+      format: 'umd',
+      name: 'RTV',
+      exports: 'named',
+      sourcemap: true,
+    },
+    {
+      file: pkg.module,
+      format: 'es',
+      exports: 'named',
+      sourcemap: true,
+    },
   ],
-  // output: [
-  //   {
-  //     file: pkg.main,
-  //     format: 'cjs',
-  //     exports: 'named',
-  //     sourcemap: true,
-  //   },
-  //   {
-  //     file: pkg.module,
-  //     format: 'es',
-  //     exports: 'named',
-  //     sourcemap: true,
-  //   },
-  // ],
   plugins: [
     external(),
     resolve(),

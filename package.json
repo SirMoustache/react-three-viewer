@@ -3,6 +3,8 @@
   "version": "0.0.2",
   "description": "React Three.js 3D model viewer",
   "main": "dist/index.js",
+  "browser": "dist/index.browser.js",
+  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --config jest.config.js",
