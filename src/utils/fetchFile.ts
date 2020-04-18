@@ -9,8 +9,8 @@ export const fetchFile = (fileUrl: string) => {
   const fetchPromise = createPromise<ArrayBuffer>();
 
   fetch(fileUrl, { signal })
-    .then(response => response.arrayBuffer())
-    .then(data => fetchPromise.resolve(data));
+    .then((response) => response.arrayBuffer())
+    .then((data) => fetchPromise.resolve(data));
 
   return Promise.resolve([
     fetchPromise.promise,
