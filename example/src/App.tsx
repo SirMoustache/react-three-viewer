@@ -7,7 +7,7 @@ const App: React.FC = () => {
   const [url, setUrl] = useState(
     'https://cdn.thingiverse.com/assets/10/3b/f2/b5/f2/xbox_wheel_wide_use_lowProfile_pivotAndRack.stl',
   );
-  const { load, fetch, addPig } = useViewer(elementRef);
+  const [binds, { load, fetch, addPig }] = useViewer(elementRef);
 
   useEffect(() => {
     console.log('addPig useEffect ');
@@ -56,7 +56,7 @@ const App: React.FC = () => {
       </section>
 
       <section>
-        <div className="viewer" ref={elementRef} />
+        <div className="viewer" ref={binds} />
       </section>
     </div>
   );

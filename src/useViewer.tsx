@@ -1,42 +1,54 @@
 /**
  * Absolute imports
  */
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 /**
  * Viewer
  */
 import createViewer, { Viewer } from './utils/viewer';
 
-const useViewer = (elementRef: React.MutableRefObject<HTMLElement | null>) => {
+const useViewer = () => {
   const testViewer = useRef<Viewer>();
+  const placeholderRef = useRef<HTMLElement | null>(null);
+
+  const setRef = (el: HTMLElement | null) => {
+    placeholderRef.current = el;
+  };
 
   useEffect(() => {
-    console.log('createViewer trigger', elementRef.current);
+    console.log('createViewer trigger');
     testViewer.current = createViewer({
-      placeholder: elementRef.current,
+      placeholder: placeholderRef.current,
     });
-  }, [elementRef.current]);
+  }, []);
 
   // const render = () => console.log('render');
 
-  return {
-    load: (file: File) => {
-      if (testViewer.current) {
-        testViewer.current.load(file);
-      }
-    },
-    fetch: (url: string) => {
-      if (testViewer.current) {
-        testViewer.current.fetch(url);
-      }
-    },
-    addPig: () => {
-      if (testViewer.current) {
-        testViewer.current.addPig();
-      }
-    },
+  const load = (file: File) => {
+    if (testViewer.current) {
+      testViewer.current.load(file);
+    }
   };
+  const fetch = (url: string) => {
+    if (testViewer.current) {
+      testViewer.current.fetch(url);
+    }
+  };
+  const addPig = () => {
+    if (testViewer.current) {
+      testViewer.current.addPig();
+    }
+  };
+
+  return [
+    setRef,
+    {
+      load,
+      fetch,
+      addPig,
+    },
+  ] as const;
 };
 
 export default useViewer;
