@@ -15,14 +15,14 @@ module.exports = {
     jest: true,
     es6: true,
   },
-  // parserOptions: {
-  //   ecmaVersion: 6,
-  //   sourceType: 'module',
-  //   ecmaFeatures: {
-  //     jsx: true,
-  //   },
-  //   project: './tsconfig.json',
-  // },
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+    project: './tsconfig.json',
+  },
   rules: {
     'prettier/prettier': ['error', prettierOptions],
     'arrow-body-style': [2, 'as-needed'],
@@ -46,13 +46,14 @@ module.exports = {
     'prefer-template': 2,
     'require-yield': 0,
     '@typescript-eslint/no-unused-vars': 1,
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      { js: 'never', jsx: 'never', ts: 'never', tsx: 'never', json: 'never' },
+    ],
   },
   settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-    },
+    'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },
   },
   overrides: [
     {
