@@ -1,16 +1,19 @@
 /**
  * Absolute imports
  */
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * Viewer
  */
 import { Viewer, createViewer } from './utils/viewer';
 
+export type Status = 'idle' | 'loading' | 'fetching';
+
 const useViewer = () => {
   const testViewer = useRef<Viewer>();
   const placeholderRef = useRef<HTMLCanvasElement | null>(null);
+  const [status, setStatus] = useState<Status>('idle');
 
   const setRef = (el: HTMLCanvasElement | null) => {
     placeholderRef.current = el;
@@ -28,13 +31,18 @@ const useViewer = () => {
   const load = (file: File) => {
     if (!testViewer.current) return;
 
-    testViewer.current.load(file);
+    setStatus('loading');
+    testViewer.current.load(file).then(() => {
+      setStatus('idle');
+    });
   };
 
   const fetch = (url: string) => {
     if (!testViewer.current) return;
-
-    testViewer.current.fetch(url);
+    setStatus('fetching');
+    testViewer.current.fetch(url).then(() => {
+      setStatus('idle');
+    });
   };
 
   const addPig = () => {
@@ -56,6 +64,7 @@ const useViewer = () => {
       fetch,
       addPig,
       clearScene,
+      status,
     },
   ] as const;
 };
