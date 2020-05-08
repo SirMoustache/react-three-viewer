@@ -14,11 +14,12 @@
     "lint:ts": "npm run lint -- ./src/**/*.ts*",
     "lint:staged": "lint-staged",
     "prettify": "prettier --write ./src/**",
-    "prepare": "npm run build",
+    "prepare": "npm run snyk-protect && npm run build",
     "prepublishOnly": "npm test && npm run lint:ts",
     "preversion": "npm run lint:ts",
     "version": "npm run prettify && git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "snyk-protect": "snyk protect"
   },
   "files": [
     "dist/*"
@@ -83,6 +84,8 @@
     "cross-env": "^7.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "typescript": "3.6.3"
-  }
+    "typescript": "3.6.3",
+    "snyk": "^1.319.2"
+  },
+  "snyk": true
 }
