@@ -8,3 +8,5 @@ patch:
         patched: '2020-05-08T08:30:02.875Z'
     - '@typescript-eslint/eslint-plugin > @typescript-eslint/experimental-utils > @typescript-eslint/typescript-estree > lodash':
         patched: '2020-05-08T08:30:02.875Z'
+    - '@babel/preset-react > @babel/plugin-transform-react-jsx-development > @babel/helper-builder-react-jsx-experimental > @babel/helper-module-imports > @babel/types > lodash':
+        patched: '2020-06-02T08:58:45.715Z'
