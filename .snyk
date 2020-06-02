@@ -8,3 +8,5 @@ patch:
         patched: '2020-05-08T08:30:02.875Z'
     - '@typescript-eslint/eslint-plugin > @typescript-eslint/experimental-utils > @typescript-eslint/typescript-estree > lodash':
         patched: '2020-05-08T08:30:02.875Z'
+    - '@typescript-eslint/parser > @typescript-eslint/typescript-estree > lodash':
+        patched: '2020-06-02T08:57:45.283Z'
