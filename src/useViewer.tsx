@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 /**
  * Viewer
  */
-import { Viewer, createViewer } from './utils/viewer';
+import { Viewer, createViewer } from './viewer';
 
 export type Status = 'idle' | 'loading' | 'fetching';
 
