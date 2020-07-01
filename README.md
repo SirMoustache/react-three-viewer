@@ -1,6 +1,6 @@
 # react-three-viewer
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/SirMoustache/react-three-viewer.svg)](https://greenkeeper.io/)
+
 
 A simple library to view 3d models in react app build with [three.js](https://github.com/mrdoob/three.js/)
 
