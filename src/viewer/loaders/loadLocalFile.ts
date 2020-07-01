@@ -1,11 +1,11 @@
 /**
  * Utils
  */
-import { createPromise, CancelablePromise } from './promiseUtils';
+import { createPromise, CancelablePromise } from '../utils/promiseUtils';
 
-export const loadFile = (
+export const loadLocalFile = (
   file: File,
-): Promise<[Promise<ArrayBuffer>, ((reason: any) => void)]> => {
+): Promise<[Promise<ArrayBuffer>, (reason: any) => void]> => {
   const reader = new FileReader();
   const readerPromise = createPromise<ArrayBuffer>();
 

@@ -46,13 +46,14 @@ module.exports = {
     'prefer-template': 2,
     'require-yield': 0,
     '@typescript-eslint/no-unused-vars': 1,
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      { js: 'never', jsx: 'never', ts: 'never', tsx: 'never', json: 'never' },
+    ],
   },
   settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-    },
+    'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },
   },
   overrides: [
     {

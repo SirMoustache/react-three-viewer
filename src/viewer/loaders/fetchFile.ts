@@ -1,7 +1,7 @@
 /**
  * Utils
  */
-import { createPromise, CancelablePromise } from './promiseUtils';
+import { createPromise, CancelablePromise } from '../utils/promiseUtils';
 
 export const fetchFile = (fileUrl: string) => {
   const { signal, abort: abortFetch } = new AbortController();

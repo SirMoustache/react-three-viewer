@@ -20,8 +20,7 @@ npm install react-three-viewer three
 import { useViewer } from 'react-three-viewer';
 
 const App: React.FC = () => {
-  const elementRef = useRef<HTMLDivElement | null>(null);
-  const { load } = useViewer(elementRef);
+  const [binds, { load }] = useViewer();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const fileList = event.target.files;
@@ -50,7 +49,7 @@ const App: React.FC = () => {
       </section>
 
       <section>
-        <div className="viewer" ref={elementRef} />
+        <div className="viewer" ref={binds} />
       </section>
     </div>
   );

@@ -7,7 +7,7 @@ import { STLLoader } from 'three/examples/jsm/loaders/STLLoader';
 /**
  * Utils
  */
-import { createDefaultMaterial } from '../materialUtils';
+import { createDefaultMaterial } from '../../materialUtils';
 
 export const parseStl = (file: ArrayBuffer) => {
   const loader = new STLLoader();
