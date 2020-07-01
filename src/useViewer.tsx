@@ -1,7 +1,7 @@
 /**
  * Absolute imports
  */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 /**
  * Viewer
@@ -15,9 +15,9 @@ const useViewer = () => {
   const placeholderRef = useRef<HTMLCanvasElement | null>(null);
   const [status, setStatus] = useState<Status>('idle');
 
-  const setRef = (el: HTMLCanvasElement | null) => {
+  const setRef = useCallback((el: HTMLCanvasElement | null) => {
     placeholderRef.current = el;
-  };
+  }, []);
 
   useEffect(() => {
     console.log('createViewer trigger');

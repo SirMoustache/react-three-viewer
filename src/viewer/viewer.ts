@@ -15,9 +15,21 @@ interface ViewerConfig {
 }
 
 export type Viewer = {
+  /**
+   * Load 3D model file to viewer
+   */
   load: (file: File) => Promise<any>;
+  /**
+   * Fetch 3D model file by url
+   */
   fetch: (url: string) => Promise<any>;
+  /**
+   * Add test mesh to scene
+   */
   addPig: () => void;
+  /**
+   * Remove all models from scene
+   */
   clearScene: () => void;
 };
 

@@ -144,9 +144,17 @@ export const setCameraPosition = (
 
 export interface SceneOptions {
   placeholder: HTMLCanvasElement | null;
+  /**
+   * Automaticaly run animation loop
+   * @default true
+   */
+  shouldAnimate?: boolean;
 }
 
-export const createScene = ({ placeholder }: SceneOptions) => {
+export const createScene = ({
+  placeholder,
+  shouldAnimate = true,
+}: SceneOptions) => {
   const width = placeholder ? placeholder.clientWidth : 0;
   const height = placeholder ? placeholder.clientHeight : 0;
 
@@ -263,7 +271,10 @@ export const createScene = ({ placeholder }: SceneOptions) => {
   };
 
   // TODO: Run animation loop ???
-  animationLoop();
+
+  if (shouldAnimate) {
+    animationLoop();
+  }
 
   return {
     scene,
