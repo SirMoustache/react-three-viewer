@@ -6,7 +6,7 @@
     "react": "file:../node_modules/react",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.5"
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
